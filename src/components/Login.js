@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import { AuthContext } from "../App";
 
 export const Login = () => {
@@ -23,29 +24,18 @@ export const Login = () => {
         isSubmitting: true,
         errorMessage: null
       });
-      fetch("http://localhost:1337/auth/local", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+      axios.post("http://localhost:1337/auth/local", {
           identifier: data.email,
           password: data.password
         })
-      })
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          throw res;
-        })
-        .then(resJson => {
+        .then(response => {
           dispatch({
               type: "LOGIN",
-              payload: resJson
+              payload: response.data
           })
         })
         .catch(error => {
+          console.log(error.response);
           setData({
             ...data,
             isSubmitting: false,
