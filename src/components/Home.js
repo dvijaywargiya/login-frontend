@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { AuthContext } from "../App";
-import { MentionsInput, Mention } from 'react-mentions';
-import defaultStyle from './defaultStyle'
-import defaultMentionStyle from './defaultMentionStyle'
 import axios from 'axios';
+import './rc-mentions.css';
+
+import Mentions from 'rc-mentions';
+
+const { Option } = Mentions;
+
 
 export const Home = () => {
   const { dispatch } = React.useContext(AuthContext);
@@ -46,14 +49,17 @@ export const Home = () => {
       <div className="home">
           <button onClick={handleFormSubmit}> LOG OUT </button>
           <div>
-            <MentionsInput
-              value={commentState.comment}
-              onChange={event => setCommentState({comment: event.target.value})}
-              style={defaultStyle}
-              placeholder={"Mention people using '@'"}
+            <Mentions
+              autoFocus
+              rows={4}
+              defaultValue=""
+              placeholder="Start mentioning with @"
             >
-            <Mention data={users} style={defaultMentionStyle} />
-            </MentionsInput>
+              {
+              users.map( user => {
+                return <Option key={user.id} value={user.display}>{user.display}</Option>
+              })}
+            </Mentions>
           </div>
       </div>
     );
