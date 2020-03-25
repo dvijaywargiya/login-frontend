@@ -30,24 +30,12 @@ export const Home = () => {
   }, []);
 
   const [commentState, setCommentState] = useState({comment:""});
-  
-  // const saveComment = () => {
-  //   let newComment = commentState.comment;
-  //   newComment = newComment.split('@@@__').join('<a href=\'/user/')
-  //   newComment = newComment.split('^^^__').join('\'>')
-  //   newComment = newComment.split('@@@^^^').join('</a>');
-  //   if (newComment !== '') {
-  //     let comment = newComment.trim();
-  //     console.log(comment);
-  //     // //Call to your DataBase like backendModule.saveComment(comment,  along_with_other_params);
-  //     // this.setState({
-  //     //   comment: '',
-  //     // })
-  //   }
-  // }
+
   return (
       <div className="home">
           <button onClick={handleFormSubmit}> LOG OUT </button>
+          <br/>
+          <br/>
           <div>
             <Mentions
               autoFocus
