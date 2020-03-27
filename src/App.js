@@ -15,12 +15,7 @@ const initialState = {
 function App() {
   const [state, dispatch] = React.useReducer(authReducer, initialState);
   return (
-      <AuthContext.Provider
-        value={{
-          state,
-          dispatch
-        }}
-      >
+      <AuthContext.Provider value={{state, dispatch}}>
         <Header />
         <div className="App">{!state.isAuthenticated ? <Login /> : <Home />}</div>
       </AuthContext.Provider>
