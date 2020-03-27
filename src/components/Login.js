@@ -80,67 +80,71 @@ export const Login = () => {
         }
   };
   return (
-      <div className="login-container">
-        <div className="card">
-          <div className="container">
-            <form onSubmit={handleFormSubmit}>
-              <h1>Login/SignUp</h1>
-                <label htmlFor="login">Login</label>
-                <input type="radio" value="login" name="group1" checked={data.login === true} onChange={handleRadioLogin}/>
-                <label htmlFor="signup">SignUp</label>
-                <input type="radio" value="signup" name="group1"checked={data.login === false} onChange={handleRadioSignUp}/>
-                <br/>
-                <br/>
-                <br/>
-                {
-                  !data.login ? 
-                  <label htmlFor="username">
-                    Username
-                    <input
-                      type="text"
-                      value={data.username}
-                      onChange={handleInputChange}
-                      name="username"
-                      id="username"
+      <div className="container">
+          <form onSubmit={handleFormSubmit}>
+            <h1>Login/SignUp</h1>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="login" checked={data.login === true} onChange={handleRadioLogin}/>
+              <label className="form-check-label" htmlFor="inlineRadio1">Login</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="signup" checked={data.login === false} onChange={handleRadioSignUp}/>
+              <label className="form-check-label" htmlFor="inlineRadio2">SignUp</label>
+            </div>
+              {
+                !data.login ?
+                  <div className="form-group">
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={data.username}
+                    onChange={handleInputChange}
+                    name="username"
+                    id="username"
+                    placeholder="Username"
                     />
-                  </label> : ''
-                }
-                <label htmlFor="email">
-                        Email Address
-                        <input
-                          type="text"
-                          value={data.email}
-                          onChange={handleInputChange}
-                          name="email"
-                          id="email"
-                        />
-                </label>
-                <label htmlFor="password">
-                        Password
-                        <input
-                          type="password"
-                          value={data.password}
-                          onChange={handleInputChange}
-                          name="password"
-                          id="password"
-                        />
-                </label>
+                </div>: ''
+              }
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  value={data.email}
+                  onChange={handleInputChange}
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                />
+                <small 
+                  id="emailHelp" 
+                  className="form-text text-muted">
+                    We'll never share your email with anyone else.
+                </small>
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  className="form-control"
+                  value={data.password}
+                  onChange={handleInputChange}
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                />
+              </div>
 
-        {data.errorMessage && (
-          <span className="form-error">{data.errorMessage}</span>
-        )}
-
-            <button disabled={data.isSubmitting}>
-              {data.isSubmitting ? (
-                "Loading..."
-              ) : (
-                data.login ?
-                  "Login" : "SignUp"
-              )}
-            </button>
-            </form>
-          </div>
-        </div>
+          <button disabled={data.isSubmitting} className="btn btn-primary btn-lg">
+            {data.isSubmitting ? (
+              "Loading..."
+            ) : (
+              data.login ?
+                "Login" : "SignUp"
+            )}
+          </button>
+          {data.errorMessage && (
+            <span className="form-error">{data.errorMessage}</span>
+          )}
+          </form>
       </div>
     );
 };
