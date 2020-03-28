@@ -133,7 +133,7 @@ export const Login = () => {
                 />
               </div>
 
-          <button disabled={data.isSubmitting} className="btn btn-primary btn-lg">
+          <button disabled={data.isSubmitting} className="btn btn-danger btn-lg">
             {data.isSubmitting ? (
               "Loading..."
             ) : (

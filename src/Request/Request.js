@@ -10,10 +10,8 @@ function Request(props) {
     const [request, setRequest] = useState([]);
     useEffect(() => {
       const fetchRequest = async () => {
-          console.log(props)
         const response = (await axios.get(`http://localhost:1337/requests/${props.match.params.requestId}`)).data;
-        console.log(response)
-        setRequest({id:response.id, title:response.Title, description:response.Description, positive:response.PositiveVotes, negative:response.NegativeVotes});
+        setRequest({id:response.id, title:response.Title, description:response.Description, positive:response.PositiveVotes, negative:response.NegativeVotes, author:response.Author});
       }
       fetchRequest();
     }, []);
@@ -37,12 +35,13 @@ function Request(props) {
           <div className="row">
             <div className="jumbotron col-12">
               <h1 className="display-3">{request.title}</h1>
+              <h6>Author: {request.author}</h6>
               <p className="lead">{request.description}</p>
               <hr className="my-4" />
               <p>Votes: + {request.positive} - {request.negative}</p>
             </div>
             <Mentions
-              singleline
+              singleline="true"
               autoFocus
               rows={2}
               defaultValue=""

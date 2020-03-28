@@ -11,10 +11,18 @@ function NavBar(props) {
       <Link className="navbar-brand" to="/">
         <h1>EOS Icon Request</h1>
       </Link>
-      {props.state.isAuthenticated && <Link className="nav-item" to="/allRequests">
+      {
+      props.state.isAuthenticated && <Link className="nav-item" to="/allRequests">
         All Requests
-      </Link>}
-      {props.state.isAuthenticated && <button type="button" className="btn btn-link" onClick={(e) => {
+      </Link>
+      }
+      {
+      props.state.isAuthenticated && <Link className="nav-item" to="/newRequest">
+        Make a new request
+      </Link>
+      }
+      {
+      props.state.isAuthenticated && <button type="button" className="btn btn-link" onClick={(e) => {
           e.preventDefault();
           history.push("/");
           dispatch({
@@ -23,7 +31,8 @@ function NavBar(props) {
             });
         }}>
         Log Out
-      </button>}
+      </button>
+      }
     </nav>
   );
 }

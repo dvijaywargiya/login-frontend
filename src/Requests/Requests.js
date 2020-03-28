@@ -8,7 +8,7 @@ function Questions() {
       const fetchRequests = async () => {
         const response = await axios.get("http://localhost:1337/requests");
         let tempVar = response.data.map((ele) => {
-          return {id:ele.id, title:ele.Title, description:ele.Description, positive:ele.PositiveVotes, negative:ele.NegativeVotes};
+          return {id:ele.id, title:ele.Title, description:ele.Description, positive:ele.PositiveVotes, negative:ele.NegativeVotes, author:ele.Author};
         })
         setRequests(tempVar);
       }
@@ -24,6 +24,7 @@ function Questions() {
                   <Link to={`/requests/${request.id}`}>
                     <div className="card text-white bg-success mb-3">
                     <div className="card-header">+ {request.positive} - {request.negative}</div>
+                    <div className="card-header">Author: {request.author}</div>
                       <div className="card-body">
                         <h4 className="card-title">{request.title}</h4>
                       </div>

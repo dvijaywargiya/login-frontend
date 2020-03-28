@@ -8,6 +8,7 @@ import {authReducer} from "./utils/Utilities";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import NoAccess from "./components/NoAccess"
+import NewRequest from "./components/NewRequest"
 
 export const AuthContext = React.createContext();
 const initialState = {
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/' component={state.isAuthenticated ? Home: Login}/>
           <Route exact path='/allRequests' component={state.isAuthenticated ? Requests: NoAccess}/>
           <Route exact path='/requests/:requestId' component={state.isAuthenticated ? Request: NoAccess}/>
+          <Route exact path='/newRequest' component={state.isAuthenticated ? NewRequest: NoAccess}/>
         </div>
     </AuthContext.Provider>
   );
