@@ -36,3 +36,7 @@
       transform: rotate(360deg);
     }
   }
+
+  #primaryNav{
+    background: linear-gradient(90deg,#fbb369,#ff814a);
+  }

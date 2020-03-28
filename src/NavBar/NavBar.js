@@ -7,7 +7,7 @@ function NavBar(props) {
     const history = useHistory();
     const { dispatch } = React.useContext(AuthContext);
     return (
-    <nav className="navbar navbar-dark bg-primary fixed-top">
+    <nav id="primaryNav" className="navbar navbar-light bg-primary fixed-top">
       <Link className="navbar-brand" to="/">
         <h1>EOS Icon Request</h1>
       </Link>
